@@ -1,4 +1,4 @@
-package Application;
+package com.restaurant.application;
 
 import java.util.*;
 
