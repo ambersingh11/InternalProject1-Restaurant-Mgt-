@@ -46,7 +46,7 @@ public class Waiter extends Employee implements Observer{
 	}
 	public void publishOrders(){
 		try{
-			//out=new ObjectOutputStream(new FileOutputStream(new File("resources//orders.ser")));
+			
 			for(Table table : tables.keySet()){
 				out.writeObject(tables.get(table));
 				
@@ -59,9 +59,19 @@ public class Waiter extends Employee implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		if(tables.containsValue((Order)arg)){
-			System.out.println("Order no. "+((Order) arg).getOrderID()+" Prepared");
-		}else{
-			
+			if(((Order)arg).isPending()){
+				for(Order order : tables.values())
+					if(((Order)arg).equals(order)){
+						order.setPending(true);
+						alterOrder(order);
+					}
+			}
+			else{
+				System.out.println("Order no. "+((Order) arg).getOrderID()+" Prepared");
+				for(Order order : tables.values())
+					if(((Order)arg).equals(order))
+						order.setPending(false);
+			}
 		}
 		
 	}

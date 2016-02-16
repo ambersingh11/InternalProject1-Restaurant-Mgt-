@@ -7,6 +7,7 @@ public class Order implements Serializable{
 	private int orderID;
 	private List<Item> items;
 	private float orderPrice;
+	private boolean pending=true;
 	
 	
 	public Order() {
@@ -37,6 +38,12 @@ public class Order implements Serializable{
 	}
 	public float getOrderPrice(){
 		return orderPrice;
+	}
+	public boolean isPending() {
+		return pending;
+	}
+	public void setPending(boolean pending) {
+		this.pending = pending;
 	}
 	@Override
 	public String toString() {

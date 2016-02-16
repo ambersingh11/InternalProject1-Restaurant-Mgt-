@@ -34,8 +34,12 @@ private Chef chef;
 	public void generateBills(){
 		for(Waiter waiter : waiters){
 			for(Table table : waiter.getTables()){
-				System.out.println("Table ID "+table.getTableID()+" Bill Amount "+waiter.getOrder(table).getOrderPrice());
+				if(waiter.getOrder(table).isPending())
+					System.out.println("Table ID: "+table.getTableID()+" Order ID: "+waiter.getOrder(table).getOrderID()+" Bill Amount: Order Pending!!!");
+				else
+					System.out.println("Table ID: "+table.getTableID()+" Order ID: "+waiter.getOrder(table).getOrderID()+" Bill Amount: "+waiter.getOrder(table).getOrderPrice());
 			}
+			
 		}
 			
 	}

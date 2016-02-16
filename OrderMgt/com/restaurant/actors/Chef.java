@@ -38,6 +38,7 @@ public class Chef extends Observable {
 				try {
 					Thread.sleep(3000);
 					setChanged();
+					order.setPending(false);
 					notifyObservers(order);
 				} catch (InterruptedException e) {
 					
@@ -45,6 +46,7 @@ public class Chef extends Observable {
 				}
 			}else{
 				setChanged();
+				order.setPending(true);
 				notifyObservers(order);
 			}
 		}

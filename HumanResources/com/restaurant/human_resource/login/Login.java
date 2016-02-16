@@ -8,10 +8,12 @@ public class Login {
 	public static void main(String[] args) {
 		EmployeeDAO dao=new EmployeeDAO();
 		Employee emp=dao.find(101);
-		//emp.setUserName("ads");
-		System.out.println(dao.finaAll());
-		dao.delete(102);
-		System.out.println(dao.finaAll());
+		emp.setUserName("ads");
+		System.out.println(ValidateEmp.validate(emp));
+		
+		//System.out.println(dao.finaAll());
+		//dao.delete(102);
+		//System.out.println(dao.finaAll());
 	}
 
 }
