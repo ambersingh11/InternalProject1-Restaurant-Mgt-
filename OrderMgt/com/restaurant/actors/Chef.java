@@ -2,8 +2,6 @@ package com.restaurant.actors;
 
 import java.io.*;
 import java.util.*;
-
-import com.restaurant.human_resource.Employee;
 import com.restaurant.subjects.*;
 
 public class Chef extends Observable {
@@ -30,7 +28,7 @@ public class Chef extends Observable {
 		dao=new ChefDAO();
 		items=dao.retrieveItems();
 		for(Item item : order.getItems())
-			if(!(items.contains(item)))
+			if(!(items.contains(item)) || item.getQuantity()>items.get(items.indexOf(item)).getQuantity())
 				return false;
 		return true;
 	}
@@ -40,7 +38,7 @@ public class Chef extends Observable {
 				try {
 					Thread.sleep(3000);
 					setChanged();
-					notifyObservers();
+					notifyObservers(order);
 				} catch (InterruptedException e) {
 					
 					e.printStackTrace();

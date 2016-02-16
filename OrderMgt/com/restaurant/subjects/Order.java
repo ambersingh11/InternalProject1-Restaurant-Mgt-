@@ -30,13 +30,45 @@ public class Order implements Serializable{
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-	public float getOrderPrice() {
+	public float setOrderPrice() {
 		for(Item item : items)
 			orderPrice += item.getItemPrice();
+		return orderPrice;
+	}
+	public float getOrderPrice(){
 		return orderPrice;
 	}
 	@Override
 	public String toString() {
 		return "Order [orderID=" + orderID + ", items=" + items + ", orderPrice=" + orderPrice + "]";
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((items == null) ? 0 : items.hashCode());
+		result = prime * result + orderID;
+		result = prime * result + Float.floatToIntBits(orderPrice);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		if (items == null) {
+			if (other.items != null)
+				return false;
+		} else if (!items.equals(other.items))
+			return false;
+		if (orderID != other.orderID)
+			return false;
+		if (Float.floatToIntBits(orderPrice) != Float.floatToIntBits(other.orderPrice))
+			return false;
+		return true;
 	}
 }

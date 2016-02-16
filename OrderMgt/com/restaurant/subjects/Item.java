@@ -7,18 +7,19 @@ public class Item implements Serializable{
 	private String itemName;
 	private float itemPrice;
 	private String category;
-	
+	private int quantity;
 	
 	public Item() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Item(int itemID, String itemName, float itemPrice, String category) {
+	public Item(int itemID, String itemName, float itemPrice, String category,int quantity) {
 		super();
 		this.itemID = itemID;
 		this.itemName=itemName;
 		this.itemPrice = itemPrice;
 		this.category = category;
+		this.quantity=quantity;
 	}
 	public int getItemID() {
 		return itemID;
@@ -27,7 +28,7 @@ public class Item implements Serializable{
 		this.itemID = itemID;
 	}
 	public float getItemPrice() {
-		return itemPrice;
+		return itemPrice*quantity;
 	}
 	public void setItemPrice(float itemPrice) {
 		this.itemPrice = itemPrice;
@@ -43,6 +44,12 @@ public class Item implements Serializable{
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	@Override
 	public String toString() {
