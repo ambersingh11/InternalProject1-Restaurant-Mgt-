@@ -3,6 +3,8 @@ package com.restaurant.subjects;
 import java.io.Serializable;
 import java.util.List;
 
+import com.restaurant.actors.Manager;
+
 public class Order implements Serializable{
 	private int orderID;
 	private List<Item> items;
@@ -48,6 +50,9 @@ public class Order implements Serializable{
 	@Override
 	public String toString() {
 		return "Order [orderID=" + orderID + ", items=" + items + ", orderPrice=" + orderPrice + "]";
+	}
+	private Object readResolve(){
+		return Manager.locateOrder(this.orderID);
 	}
 	@Override
 	public int hashCode() {

@@ -60,17 +60,12 @@ public class Waiter extends Employee implements Observer{
 	public void update(Observable o, Object arg) {
 		if(tables.containsValue((Order)arg)){
 			if(((Order)arg).isPending()){
-				for(Order order : tables.values())
-					if(((Order)arg).equals(order)){
-						order.setPending(true);
-						alterOrder(order);
-					}
+				alterOrder((Order)arg);
+					
 			}
 			else{
 				System.out.println("Order no. "+((Order) arg).getOrderID()+" Prepared");
-				for(Order order : tables.values())
-					if(((Order)arg).equals(order))
-						order.setPending(false);
+				
 			}
 		}
 		

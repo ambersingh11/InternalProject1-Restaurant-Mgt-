@@ -20,7 +20,7 @@ public class App {
 		
 		items=new ArrayList<Item>();
 		items.add(new Item(234,"kurma makahni",430.00f,"veg",3));
-		items.add(new Item(346,"fried daal",534.00f,"veg",1));
+		items.add(new Item(346,"fried daa",534.00f,"veg",1));
 		manager.greetCustomer(655,2345,items);
 		
 		manager.manageOrders();
